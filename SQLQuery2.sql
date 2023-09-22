@@ -1,45 +1,30 @@
-select * from employe11
-drop table employe11
-create table employe11
+create table employeee
 (
 id int primary key,
-name varchar(20)not null,
-email varchar(20)unique,
+name varchar(20) not null,
+email varchar(25) unique,
 age int check(age>=18),
-salary numeric(10,2)
+salary numeric(12,2)
 
 )
-insert into employe11 values(201,'rutuja','rutuja@gmail.com',23,26000.10)
-insert into employe11 values(202,'rutu','rutu@gmail.com',22,25000.20)
-insert into employe11 values(203,'radha','radha@gmail.com',21,27500.10)
-insert into employe11 values(204,'kshitj','kshitij@gmail.com',22,25120.12)
-insert into employe11 values(205,'pranil','pranil@gmail.com',23,28100.20)
 
-drop table department
-create table department
-(
-did int primary key,
-dname varchar(25)
-)
-insert into department values(10,'hr'),(20,'sales'),(30,'managament'),(40,'development'),(50,'testing'),(60,'admin')
-alter table employe11 add did int
-alter table employe11 add constraint pk_fk_dept_emp 
-foreign key(did) references dept(did)
+select * from employeee
 
-update employe11 set did=10 where id in(201,202)
-update employe11 set did=20 where id in(203,205)
-update employe11 set did=30 where id in(204)
+insert into employeee values(101,'pradnya','pradnya@12gmail.com',22,35000.60)
+insert into employeee values(102,'neha','neha@gmail.com',22,35000.80)
+insert into employeee values(103,'mrunali','mrunali@gmail.com',23,30000.18)
+insert into employeee values(104,'sneha','sneha12@gmail.com',23,35250.13)
+insert into employeee values(105,'sukanya','suknya@gmail.com',22,36249.75)
+insert into employeee values(106,'pooja','pooja@gmail.com',24,32249.85)
+insert into employeee values(107,'shruti','suknya@gmail.com',22,36249.62)
+insert into employeee values(108,'aditya','aditya12@gmail.com',25,33349.46)
+insert into employeee values(109,'rohan','rohan33@gmail.com',24,39249.55)
+insert into employeee values(110,'harsh','harsh03@gmail.com',24,45249.10)
+insert into employeee values(111,'anuj','anuj@gmail.com',23,66249.45)
+insert into employeee values(112,'vaibhav','vaibhav56@gmail.com',24,53249.20)
+insert into employeee values(113,'jitendra','jitendra66@gmail.com',25,48249.63)
+insert into employeee values(114,'shweta','shweta77@gmail.com',25,26919.45)
+insert into employeee values(115,'harshwardhan','harshwardhan07@gmail.com',24,70349.96)
 
-
-select * from department
-select * from employe11
-
-select e.*,d.dname
-from employe11 e
-inner join department d  on d.did=e.did
-
-
-
-
-
+--
 
