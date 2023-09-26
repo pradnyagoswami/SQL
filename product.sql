@@ -23,21 +23,32 @@ insert into product values (110,'adapter',4500.34,'dell')
 --1>disply all record
 select * from product
 
+-------------------------------------------------------------------------------------------------
+
 ---2>disply product whose price <2000
 select * from product where price<2000
+
+-----------------------------------------------------------------------------------------------------------
 
 --3>disply product whose company name is LG
 select * from product where company='lg'
 
+------------------------------------------------------------------------------------------------------------------
+
 --4>Display products whose price is between 2000 to 5000
 select * from product where price between 2000 and 5000
 
+------------------------------------------------------------------------------------------------------------------
 
 --5>Display unique company name 
 select distinct company from product
 
+-----------------------------------------------------------------------------------------------------------------------
+
 --6>Display products whose company is dell & hp
 select * from product where company in ('dell','hp')
+
+-----------------------------------------------------------------------------------------------------------------------
 
 
 create table customer3
@@ -46,9 +57,6 @@ cid int,
 cname varchar(20),
 id int,
 constraint fk_product_id foreign key(id) references product(id)
-
-
-
 
 )
 

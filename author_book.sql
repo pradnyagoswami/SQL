@@ -66,34 +66,42 @@ insert into award values (46,32,22,12,2009)
 
 select * from Award
 
-
-
-
 --1>find the book which is written by williams_s 
 select book_name,author_name from Book1 b inner join author a on b.author_id=a.author_id where author_name='william_s'
 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
 --2>find author name for book gitanjali
 select Book_name, author_name from author a inner join book1 b on a.author_id=b.author_id where Book_name='gitanjali'
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --3>find author name who got award in 2012
 select a.author_name from author a join award aw on a.author_id=aw.author_id where aw.award_year=2012
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --4>find the book got an awards
 select book_name from book1 b join award a on a.Book_id=b.Book_id 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 
 --5>find out the author wise book count 
 select author_name,count(*) as count from author a inner join book1 b on a.author_id=b.author_id 
 group by a.author_name
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 
 --6>find the author name who got only one award
 select author_name  ,count(aw.award_id) as cnt from author a inner join award aw on a.author_id=aw.author_id
 group by a.author_name
 having count(aw.author_id)=1
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 
 --7>find the authorname who got InterNational_bookaward
 select author_name from author a inner join award aw on a.author_id=aw.author_id  inner join Award_master am on am.award_type_id=aw.award_type_id
 where award_name='InterNational_bookaward'
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --8>find the author who got award price more than 50,000
 select a.author_name
@@ -102,16 +110,13 @@ on a.author_id=aw.author_id
 inner join Award_master am 
 on aw.award_type_id=am.award_type_id
 where am.award_price>50000
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --9>find author who got maximum awards
 select  top 1  a.author_name,count(*) as counts from author a inner join award aw on a.author_id=aw.author_id 
 group by a.author_name
 order by count(*) desc
-+
-
-
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
 select * from author
 select * from award_master
 select * from Book1

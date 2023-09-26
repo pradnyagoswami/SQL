@@ -94,42 +94,40 @@ insert into Transactions values(5,1122,7500,'credit','2021/12/13')
 --1.Find the no of accounts in saving account
 select count(acctype_id) from Account_Type where acctype='saving'
 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
 --2.Display all bank name, cname , city from all  bank in ascending order of bankname  and desceding order of city name----not execute
 select b.bname,cm.cname,b.city from bank b inner join Customers c on b.bankid=c.bankid 
 inner join Customer_Masters cm on cm.custid=c.custid 
 order by city desc
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --3.Find the customer who has perform maximum number of transaction
 select max(transaction_id) from Transactions
-
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --4.find the customers whose  balance is greater than avg balance of saving accounts.
 select c.* from Customers c inner join Accounts a on c.custid=a.custid
  where balance>(select avg(balance) from Accounts where acctype_id =
 (select acctype_id from Account_Type where acctype='saving'))
-
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --5 find the amount , name of customer whose acc_no is 1133
 select 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
+--6.display the customer name ,contact of customers whose account type is ‘saving’ order by descending order of cname .
 
-
-
---6.	display the customer name ,contact of customers whose account type is ‘saving’ order by descending order of cname .
-
-
-select * from Account_Type
-select * from Customer_Masters
-
-
-
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --7.	display bank name , total balance of all customers in that bank of all banks in descending order of balance.
 select b.bname from Bank b where 
 (select sum(balance) from Accounts)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
+
+select * from Account_Type
+select * from Customer_Masters

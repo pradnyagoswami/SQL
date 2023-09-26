@@ -1,6 +1,6 @@
 ----Addition of 2 numbers using SQL functions----
 ---scalar functions---
-create function addition(@ int,@ int)
+create function addition(@a int,@b int)
 returns int
 as begin
 declare @c int
@@ -25,6 +25,8 @@ create function GetEmpByDept(@did int)
 returns table
 as
 return (select * from employe1 where id=@did)
-select * from dbo.GetEmpByDept(103)
+select * from dbo.GetEmpByDept(201)
+
+
 
 select * from employe1

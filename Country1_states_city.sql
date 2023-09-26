@@ -49,24 +49,38 @@ insert into city values(55,'german_wien',45)
 --1>find country whose state is maharastra
 select cname from country1 c join states s on c.cid=s.cid where sname='maharastra'
 
+--------------------------------------------------------------------------------------------------------------------
+
 --2>find country id,country name whose state is maharastra and city is pune
 select * from states
 select * from city
 select * from country1
 select c.cid ,c.cname from country1 c inner join states s on c.cid=s.cid inner join  city ct on ct.stid=s.stid where s.sname='maharstra' or ct.cityname ='pune' 
 
+---------------------------------------------------------------------------------------------------------------------------
+
 --3>find the state for country japan
 select s.sname from states s inner join country1 c on s.cid=c.cid where c.cname ='japan' 
+
+-----------------------------------------------------------------------------------------------------------------------------------
 
 --4> find city name from country India
 select cityname from city c inner join states s on c.stid=s.stid  inner join  country1  co on co.cid=s.cid where co.cname='india' 
 
+---------------------------------------------------------------------------------------------------------------------------------------------
+
 --5>find state name whose city name pune
 select sname from states s inner join city c on c.stid=s.stid where cityname='pune'
+
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 --6> find state name whose state id =43
 select sname from states where stid=43
 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 --7>find state name whose stid is 35 and city name toronto
 select sname,stid from states where stid=(select stid from city where cityname='toronto')
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
 

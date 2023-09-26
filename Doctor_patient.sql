@@ -68,42 +68,73 @@ insert into Admissions values('2023/02/19','2023/03/13','HeartDiesease',102,503)
 insert into Admissions values('2022/08/15','2022/11/18','HandFracture',103,501)
 insert into Admissions values('2021/01/14','2021/03/21','Cough',105,502)
 insert into Admissions values('2023/05/10','2023/07/11','ChestPain',104,503)
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 --1.Show the first name, last name and gender of patients who’s gender is ‘M’
 select p.First_name,p.Last_name from Patients p where gender='male'
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --2.Show the first name & last name of patients who does not have any allergies
 select p.First_name,p.Last_name from Patients p where allergies='null'
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --3.Show the patients details that start with letter ‘n’
 select CONCAT(first_name, ' ',Last_name)  as 'FullName' from Patients 
 select * from Patients where First_name like 'N%'
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --4.Show the patients details that height range 100 to 200
 select * from Patients where height between 100 and 150
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --5.Update the patient table for the allergies column. Replace ‘NKA’ where allergies is null
 update Patients set allergies = 'NKA' where allergies ='null'
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --6.Show how many patients have birth year is 2020
 select p.* from Patients p 
 where year(Birthdate)=2002
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --7.Show the patients details who have greatest height
 select top 1 * from Patients order by height desc
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 --8.Show the total amount of male patients and the total amount of female patients in the patients table.
 select p.* from Patients p 
 select p.patient_id, count(Patient_id) as 'femalecount' from Patients p where gender='female' 
 group by patient_id 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 --9.Show first and last name, allergies from patients which have allergies to either 'SkinAllergy' or 'Morphine'. Show results ordered ascending 
 --by allergies then by first_name then by last_name.
 select p.first_name,p.Last_name from Patients p where allergies ='SkinAllergy' or allergies ='Morphine' 
 order by first_name,last_name
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 --10.Show first_name, last_name, and the total number of admissions attended for each doctor.
 --Every admission has been attended by a doctor.
+select concat(d.first_name,' ',d.last_name) as 'Patient Full Name' , count(d.doctor_id) as 'Attened admission'
+from Doctor d
+inner join Admissions a on d.doctor_id = a.doctor_id
+inner join Patients p on p.patient_id = a.patient_id
+group by concat(d.first_name,' ', d.last_name)  
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 --11.For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.
-select CONCAT(first_name, ' ',Last_name)  as 'FullName' from Patients
+select CONCAT(p.first_name, ' ',p.last_name) as 'patient full name', a.diagnosis, CONCAT(d.first_name, ' ', d.last_name) as 'doctor'
+from Patients p
+inner join Admissions a on a.patient_id= p.patient_id
+inner join doctor d on d.doctor_id = a.doctor_id
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 select * into pat copy from patients
